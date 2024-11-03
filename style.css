@@ -120,7 +120,7 @@ html, body{
     display: grid;
     place-items: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-    transition: 300ms cubic-bezier(.42,0,.44,1.68);
+    transition: 300ms ease-in-out;
     cursor: pointer;
   }
 .bottom-container div svg{
@@ -139,7 +139,7 @@ html, body{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     transform: translateY(-60px);
     opacity: 0;
-    transition: 300ms cubic-bezier(.42,0,.44,1.68);
+    transition: 300ms ease-in-out;
   }
   .bottom-container div:hover{
     background-color: var(--accent-color);
