@@ -51,25 +51,27 @@ html, body{
 
 /* middle column */
 .center-column{
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
     padding: 20px;
     background-color: #ffffff38;
     border-radius: 30px;
 }
-.top-container{
+.center-column-bg{
     display: flex;
-    flex-direction: column;
-    justify-content: end;
     background-image: url(img/turboflower_resized.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
+    width: 100%;
     padding: 16px;
     border-radius: 10px;
     border: solid #ffffff5d 1px;
+    justify-content: space-between;
+}
+.top-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 .top-container h1{
     font-family: "Poppins", sans-serif;
@@ -83,17 +85,13 @@ html, body{
     font-size: 1.5rem;
     color: white;
 }
-
-
-
-
-
 .bottom-container {
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
     gap: 20px;
+    align-items: end;
 }
 /* .bottom-container div {
     display: flex;
@@ -123,6 +121,7 @@ html, body{
     place-items: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     transition: 300ms cubic-bezier(.42,0,.44,1.68);
+    cursor: pointer;
   }
 .bottom-container div svg{
     width: 32px;
