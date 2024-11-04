@@ -169,7 +169,7 @@ html, body{
     background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
     backdrop-filter: blur(10px);
     cursor: pointer;
-    transition: 300ms linear;
+    transition: 300ms ease-in-out;
 }
 /* socialPopup Content */
 .socialPopupContent {
