@@ -41,3 +41,22 @@ window.addEventListener("click", function(event) {
         aboutPopup.style.zIndex = "-2";
     }
 })
+
+var contactPopup = document.getElementById("contactPopup");
+var contactPopupButton = document.getElementById("contactButton");
+var divContactClose = document.getElementsByClassName("contactClose")[0];
+
+contactPopupButton.onclick = function() {
+    contactPopup.style.opacity = "1";
+    contactPopup.style.zIndex = "1";
+}
+divContactClose.onclick = function() {
+    contactPopup.style.opacity = "0";
+    contactPopup.style.zIndex = "-1";
+}
+window.addEventListener("click", function(event) {
+    if (event.target == contactPopup) {
+        contactPopup.style.opacity = "0";
+        contactPopup.style.zIndex = "-2";
+    }
+})
