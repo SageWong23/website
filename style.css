@@ -3,16 +3,16 @@
 :root{
     --color-border: #ffffff5d;
 }
-
-html, body{
+body{
     margin: 0;
-}
-/* background image and grid padding */
-.background{
     background-image: url(img/turboflower_resized-blur.jpg);
+    /* background: tomato; */
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+/* background image and grid padding */
+.background{
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -54,12 +54,11 @@ html, body{
 } */
 
 /* middle column */
-.center-column{
-    padding: 20px;
-    background-color: #ffffff38;
+.center-column {
     border-radius: 30px;
+    padding: 20px;
 }
-.center-column-bg{
+.center-column-bg {
     display: flex;
     flex-direction: column;
     background-image: url(img/turboflower_resized.jpg);
@@ -68,11 +67,46 @@ html, body{
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    padding: 16px;
+    padding: 10px;
     border-radius: 10px;
-    border: solid var(--color-border) 1px;
     justify-content: end;
+    position: relative;
 }
+.center-column-bg::after, .center-column-bg::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: unset;
+    animation: 3s spin linear infinite;
+    z-index: -1;
+    opacity: 0.25;
+}
+.center-column-bg::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+@keyframes spin {
+    from{
+      --angle: 0deg;
+    }
+    to{
+      --angle: 360deg;
+    }
+} 
+
+
 .top-container{
     display: flex;
     flex-direction: column;
@@ -146,9 +180,9 @@ html, body{
   }
 
 
-
-/* socialPopup div wrapper */
-.socialButtonStyle{
+/* aboutPopup, socialPopup button wrapper */
+.socialButtonStyle,
+.aboutButtonStyle {
     background: none;
 	color: inherit;
 	border: none;
@@ -157,21 +191,24 @@ html, body{
 	cursor: pointer;
 	outline: inherit;
 }
-/* socialPopup background */
-.socialPopupStyle {
+
+/* aboutPopupStyle, socialPopup background */
+.socialPopupStyle,
+.aboutPopupStyle {
     display: flex;
-    opacity: 0; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    opacity: 0;
+    position: fixed;
     z-index: -1;
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
     cursor: pointer;
     transition: 300ms ease-in-out;
 }
-/* socialPopup Content */
+
+/* aboutPopup, socialPopup Content */
 .socialPopupContent {
     position: relative;
     background: #d1d1d14f;
@@ -179,35 +216,102 @@ html, body{
     padding: 0;
     border: solid var(--color-border) 1px;
     border-radius: 40px;
-    width: 30rem;
-    height: 30rem;
+    width: 40vh;
+    height: 40vh;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     cursor: default;
 }
-.socialPopupContentGrid{
+.aboutPopupContent {
+    position: relative;
+    background: #d1d1d14f;
+    margin: auto;
+    padding: 0;
+    border: solid var(--color-border) 1px;
+    border-radius: 40px;
+    width: 50vh;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: default;
+}
+.socialPopupContentGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     place-items: center;
     height: 100%;
 }
-.socialPopupContentGrid div svg{
+.socialPopupContentGrid div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.socialPopupContentGrid div svg {
     width: 50px;
     height: 50px;
+    fill: white;
+    transition: 150ms ease-in-out;
 }
-/* The Close Button */
+.socialPopupContentGrid div svg:hover {
+    transform: scale(1.2);
+}
+.socialPopupContentGrid div h5 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.5rem;
+    margin: 0;
+}
+.aboutPopupContentGrid {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+}
+.aboutPopupContent h2{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: white;
+}
+.aboutPopupContent p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: white;
+}
+.aboutPopupContent img{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+}
+
+/* aboutPopup, socialPopup close button */
 .socialClose {
     position: absolute;
-    left: 31rem;
+    left: 40vh;
     top: -2rem;
     color: #fff;
-    font-size: 3rem;
-    font-weight: bold;
-    transition: 100ms linear;
+    transition: 150ms ease-in-out;
+}
+.aboutClose {
+    position: absolute;
+    left: 50vh;
+    top: -2rem;
+    color: #fff;
+    transition: 150ms ease-in-out;
 }
 .socialClose:hover,
-.socialClose:focus {
-    transform: scale(2);
+.socialClose:focus,
+.aboutClose:hover,
+.aboutClose:focus {
+    transform: scale(1.5);
     text-decoration: none;
     cursor: pointer;
 }
+.socialClose svg,
+.aboutClose svg{
+    height: 2rem;
+}
+
